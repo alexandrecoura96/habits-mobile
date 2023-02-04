@@ -1,4 +1,4 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar } from "react-native";
 import {
   useFonts,
   Inter_400Regular,
@@ -22,13 +22,13 @@ export default function App() {
   }
 
   return (
-    <View>
+    <>
       <Home />
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
       />
-    </View>
+    </>
   );
 }
