@@ -65,7 +65,6 @@ export function Habit() {
         );
       } else {
         setCompletedHabits((prevState) => [...prevState, habitId]);
-        console.log("else", completedHabits);
       }
     } catch (error) {
       console.log(error);
@@ -101,7 +100,6 @@ export function Habit() {
         >
           {dayInfo?.possibleHabits ? (
             dayInfo?.possibleHabits.map((habit) => {
-              console.log(habit);
               return (
                 <Checkbox
                   key={habit.id}
