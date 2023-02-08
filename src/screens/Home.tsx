@@ -71,9 +71,9 @@ export function Home() {
         {summary && (
           <View className="flex-row flex-wrap">
             {datesFromYearStart.map((date) => {
-              const dayWithHabits = summary.find((day) => {
-                return dayjs(date).isSame(day.date, "day");
-              });
+              const dayWithHabits = summary.find((day) =>
+                dayjs(date).isSame(day.date, "day")
+              );
 
               return (
                 <HabitDay
