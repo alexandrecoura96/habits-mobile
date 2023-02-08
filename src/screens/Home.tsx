@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Text, View, ScrollView, Alert } from "react-native";
 import { HabitDay, DAY_SIZE } from "../components/HabitDay";
 import { Header } from "../components/Header";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { generateDatesFromYearBeginning } from "../utils/generate-dates-from-year-beginning";
 import { api } from "../lib/axios";
 import { Loading } from "../components/Loading";
@@ -30,7 +30,6 @@ export function Home() {
     try {
       setLoading(true);
       const response = await api.get("/summary");
-      console.log(response.data);
       setSummary(response.data);
     } catch (error) {
       Alert.alert("Ops", "Não foi possível carregar a informação");
@@ -40,9 +39,11 @@ export function Home() {
     }
   }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchData();
+    }, [])
+  );
 
   if (loading) {
     return <Loading />;
@@ -91,7 +92,7 @@ export function Home() {
                 length: ammountOfDaysToFill,
               }).map((_, index) => (
                 <View
-                  key={index}
+                  key={`${_}-${index}`}
                   className="bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800 opacity-40"
                   style={{ width: DAY_SIZE, height: DAY_SIZE }}
                 />
