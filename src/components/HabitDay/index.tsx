@@ -33,16 +33,20 @@ export function HabitDay({
     <TouchableOpacity
       className={clsx("rounded-lg border-2 m-1", {
         ["bg-zinc-900 border-zinc-800"]: ammountAccomplishedPercentage === 0,
-        ["bg-violet-900 border-violet-700"]:
+        ["bg-violet-900 border-violet-500"]:
           ammountAccomplishedPercentage > 0 &&
           ammountAccomplishedPercentage < 20,
+        ["bg-violet-800 border-violet-500"]:
+          ammountAccomplishedPercentage >= 20 &&
+          ammountAccomplishedPercentage < 40,
         ["bg-violet-700 border-violet-500"]:
-          ammountAccomplishedPercentage > 40 &&
+          ammountAccomplishedPercentage >= 40 &&
           ammountAccomplishedPercentage < 60,
         ["bg-violet-600 border-violet-500"]:
-          ammountAccomplishedPercentage > 60 &&
+          ammountAccomplishedPercentage >= 60 &&
           ammountAccomplishedPercentage < 80,
-        ["bg-violet-500 border-violet-400"]: ammountAccomplishedPercentage > 80,
+        ["bg-violet-500 border-violet-400"]:
+          ammountAccomplishedPercentage >= 80,
         ["border-white border-4"]: isCurrentDay,
       })}
       activeOpacity={0.7}
